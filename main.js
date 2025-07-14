@@ -5,6 +5,6 @@ import { MenuState } from './src/states/menuState.js';
 (async() => {
     const app = await createApp();
 
-    changeGameState(MenuState);
+    //changeGameState(MenuState);
 })();
 

@@ -11,6 +11,5 @@ export async function createApp() {
         backgroundColor: BACKGROUND_COLOR
     });
 
-    document.body.appendChild(app.canvas);
     return app;
 }

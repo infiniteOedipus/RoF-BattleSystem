@@ -1,8 +1,11 @@
-import { Container, Sprite } from "pixi.js";
+import { Container, Sprite, Spritesheet } from "pixi.js";
+import { loadedAssets } from "../core/assets";
 
 export class Card extends Container {
     constructor (BGTexture, FGTexture){
         super()
+
+        const sheet = loadedAssets.ui['cardSheet']
 
         this.bg = Sprite.from(backgroundTexture);
 		this.fg = Sprite.from(foregroundTexture);
@@ -12,4 +15,8 @@ export class Card extends Container {
 
 		this.addChild(this.bg, this.fg);
     }
+}
+
+function getCardSprite(char, action) {
+
 }

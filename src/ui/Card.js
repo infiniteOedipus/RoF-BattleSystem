@@ -5,7 +5,7 @@ export class Card extends Container {
     constructor (BGTexture, FGTexture){
         super()
 
-        const sheet = loadedAssets.ui['cardSheet']
+        const sheet = loadedAssets.cardSheet
 
         this.bg = Sprite.from(backgroundTexture);
 		this.fg = Sprite.from(foregroundTexture);

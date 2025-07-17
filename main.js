@@ -8,6 +8,7 @@ import { MenuState } from './src/states/menuState.js';
     await loadAssets();
 
     document.body.appendChild(app.canvas)
+    
     //changeGameState(MenuState);
 })();
 

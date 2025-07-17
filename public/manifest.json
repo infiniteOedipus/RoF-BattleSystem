@@ -1,11 +1,15 @@
 {
   "bundles": [
     {
-      "name": "ui",
-      "assets": {
-        "card-ui": "./assets/card-ui.json", 
-        "other-ui": "./assets/other-ui.png"
-      }
+      "name": "cards",
+      "assets": [
+        { "name": "sheet_card_bg",      "src": "/sprites/sheet_card_bg.png" },
+        { "name": "sheet_card_char",    "src": "/sprites/sheet_card_char.png" },
+        { "name": "sheet_card_attack",  "src": "/sprites/sheet_card_attack.png" },
+        { "name": "sheet_card_defend",  "src": "/sprites/sheet_card_defend.png" },
+        { "name": "sheet_card_item",    "src": "/sprites/sheet_card_item.png" },
+        { "name": "sheet_card_blood",   "src": "/sprites/sheet_card_blood.png" }
+      ]
     }
   ]
 }

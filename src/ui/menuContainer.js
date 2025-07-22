@@ -3,6 +3,7 @@ import { input } from "../core/input";
 import { battleParticipants, menuActions } from "../config";
 import { gameLoop } from "../../main";
 import { Card } from "./Card";
+import { DropShadowFilter } from "pixi-filters";
 
 export class menuContainer extends Container {
     constructor (){
@@ -23,7 +24,7 @@ export class menuContainer extends Container {
         };
 
         this.filters = [
-            
+            new DropShadowFilter
         ]
 
         this.runCardCreation();

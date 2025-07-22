@@ -41,7 +41,7 @@ export const items = [
 
 export const menuActions = [
     { 
-        label: "Attack", 
+        label: "attack", 
         hasSubmenu: false, 
         flavor: {
             zeaque: "Zeaque aims his buckshot",
@@ -51,7 +51,7 @@ export const menuActions = [
         }
     },
     {
-        label: "Defend", 
+        label: "defend", 
         hasSubmenu: false, 
         flavor: {
             zeaque: "Zeaque readies to parry",
@@ -61,7 +61,7 @@ export const menuActions = [
         }
     },
     { 
-        label: "Blood", 
+        label: "blood", 
         hasSubmenu: false ,
         flavor: {
             zeaque: "Teal",
@@ -71,7 +71,7 @@ export const menuActions = [
         }
     },
     { 
-        label: "Item", 
+        label: "item", 
         hasSubmenu: items ,
         flavor: {
             zeaque: "Zeaque orginizes his inventory",
@@ -81,3 +81,11 @@ export const menuActions = [
         },
     }
 ];
+
+export const characterIndexMap = {
+	PH    : 0,
+  	zeaque: 1,
+  	vessta: 2,
+  	phenix: 3,
+  	markor: 4
+};

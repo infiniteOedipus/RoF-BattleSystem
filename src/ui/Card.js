@@ -2,6 +2,7 @@ import { Container, Rectangle, Sprite, Texture } from "pixi.js";
 import { loadedTextures } from "../core/assets";
 import { characterIndexMap } from "../config";
 import { gameLoop } from "../../main";
+import { DropShadowFilter } from "pixi-filters";
 
 export class Card extends Container {
     constructor (char, action, isCompleted){
@@ -17,6 +18,14 @@ export class Card extends Container {
 
 		this.bg.anchor.set(0.5);
 		this.fg.anchor.set(0.5);
+
+        this.filters = [
+            new DropShadowFilter({
+                //offset,x : 0,
+                //offset,y : 0,
+                blur : 3,
+            })
+        ]
 
         this.pivot.set(this.width * 0.5, this.height * 0.5);
 		this.addChild(this.bg, this.fg);

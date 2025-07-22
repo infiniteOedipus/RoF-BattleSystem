@@ -13,6 +13,7 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "@assetpack/core": "^1.5.0",
     "vite": "^7.0.4"
   },
   "dependencies": {

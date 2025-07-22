@@ -21,8 +21,8 @@ export class Card extends Container {
 
         this.filters = [
             new DropShadowFilter({
-                //offset,x : 0,
-                //offset,y : 0,
+                offsetX : 0,
+                offsetY : 0,
                 blur : 3,
             })
         ]

@@ -25,8 +25,8 @@ export class menuContainer extends Container {
 
         this.filters = [
             new DropShadowFilter({
-                //offset,x : 0,
-                //offset,y : 0,
+                offsetX : 0,
+                offsetY : 0,
                 blur : 6,
             })
         ]
@@ -81,10 +81,6 @@ export class menuContainer extends Container {
             state.liveSelections[state.step] = null
             state.finishedChoicePath[state.liveSelections[0]] = false
             state.step--
-            this.runCardRemoval()
-            this.menuState.cards = []
-            this.menuState.locked = true
-            this.runCardCreation()
         }
     };
 
@@ -104,11 +100,11 @@ export class menuContainer extends Container {
 
     runCardCreation() {
         const state = this.menuState
-        const delayEq = (i) => {return i * 0.075}
+
         if (state.step === 0) {
             battleParticipants.forEach((char, i) => {
                 
-                const delay = delayEq(i)
+                const delay = i * 0.15 + (0.1 / (2 * i + 1))
                 let elapsed = 0
                 const cardDelayTicker = (ticker) => {
                     elapsed += ticker.deltaMS / 1000
@@ -128,7 +124,7 @@ export class menuContainer extends Container {
         if (state.step === 1) {
             menuActions.forEach((action, i) => {
                 
-                const delay = delayEq(i)
+                const delay = i * 0.15 + (0.1 / (2 * i + 1))
                 let elapsed = 0
                 const cardDelayTicker = (ticker) => {
                     elapsed += ticker.deltaMS / 1000

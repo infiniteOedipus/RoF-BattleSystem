@@ -1,4 +1,4 @@
-import { Container } from "pixi.js";
+import { Container, Text } from "pixi.js";
 import { input } from "../core/input";
 import { battleParticipants, menuActions } from "../config";
 import { gameLoop } from "../../main";
@@ -31,6 +31,32 @@ export class menuContainer extends Container {
             })
         ]
 
+        this.cardTitleText = new Text({
+            text: ``,
+            style: {
+                fontFamily: "Courier New",
+                fontSize: 22,
+                fontWeight: "bold",
+            },
+            anchor: 0.5,
+            x: 325,
+            y: 240
+        })
+
+        this.cardFlavorText = new Text({
+            text: ``,
+            style: {
+                fontFamily: "Courier New",
+                fontSize: 14,
+                fontWeight: "bold",
+            },
+            anchor: 0.5,
+            x: 325,
+            y: 260
+        })
+
+        this.addChild(this.cardTitleText)
+        this.addChild(this.cardFlavorText)
         this.runCardCreation();
         gameLoop.add(this.update, this)
     };
@@ -39,6 +65,7 @@ export class menuContainer extends Container {
         const dt = ticker.deltaMS / 1000
         this.menuInputControl();
         this.updateCardTargets(dt);
+        this.updateTitleText();
     }
 
     menuInputControl() {
@@ -176,6 +203,26 @@ export class menuContainer extends Container {
         this.menuState.cards.forEach((card) => {
             card.destroyCard()
         })
+    }
+
+    updateTitleText() {
+        
+        let activeTitle = ''
+        let activeFlavor = ''
+
+        if (this.menuState.step === 0) {
+            activeTitle = battleParticipants[this.menuState.selectionIndex]
+        }
+        if (this.menuState.step === 1) {
+            activeTitle = menuActions[this.menuState.selectionIndex].label
+            activeFlavor = menuActions[this.menuState.selectionIndex].flavor[battleParticipants[this.menuState.liveSelections[0]]]
+        }
+        if (this.menuState.step === 2) {
+            
+        }
+        
+        if (this.cardTitleText.text != activeTitle) this.cardTitleText.text = activeTitle
+        if (this.cardFlavorText.text != activeFlavor) this.cardFlavorText.text = activeFlavor
     }
 }
 

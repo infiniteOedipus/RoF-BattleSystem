@@ -14,28 +14,28 @@ export const keyBindings = {
 	debug: ["p", "P"]
 };
 
-export const battleParticipants = ["zeaque", "markor", "phenix", "vessta"];
+export const battleParticipants = ["Zeaque", "Markor", "Phenix", "Vessta"];
 
 export const items = [
     { 
-        name: "Baja Blast", 
+        label: "Baja Blast", 
         consumable: true, 
-        owner: "zeaque"
+        owner: "Zeaque"
     },
     { 
-        name: "Baja Blast", 
+        label: "Baja Blast", 
         consumable: true, 
-        owner: "zeaque"
+        owner: "Zeaque"
     },
     { 
-        name: "Baja Blast", 
+        label: "Baja Blast", 
         consumable: true, 
-        owner: "zeaque"
+        owner: "Zeaque"
     },
     { 
-        name: "Phone", 
+        label: "Phone", 
         consumable: false, 
-        owner: "zeaque" 
+        owner: "Zeaque" 
     }
 ];
 
@@ -44,48 +44,48 @@ export const menuActions = [
         label: "attack", 
         hasSubmenu: false, 
         flavor: {
-            zeaque: "Zeaque aims his buckshot",
-            markor: "Markor charges his psionics",
-            phenix: "Phenix burns his way forward",
-            vessta: "Vessta gets Horny"
+            Zeaque: "Zeaque aims his buckshot",
+            Markor: "Markor charges his psionics",
+            Phenix: "Phenix burns his way forward",
+            Vessta: "Vessta gets Horny"
         }
     },
     {
         label: "defend", 
         hasSubmenu: false, 
         flavor: {
-            zeaque: "Zeaque readies to parry",
-            markor: "Markor creates an arcane barrier",
-            phenix: "Phenix burns his way forward",
-            vessta: "Vessta tanks the hits"
+            Zeaque: "Zeaque readies to parry",
+            Markor: "Markor creates an arcane barrier",
+            Phenix: "Phenix burns his way forward",
+            Vessta: "Vessta tanks the hits"
         }
     },
     { 
         label: "blood", 
         hasSubmenu: false ,
         flavor: {
-            zeaque: "Teal",
-            markor: "Gold",
-            phenix: "Rust",
-            vessta: "Fuschia"
+            Zeaque: "Teal",
+            Markor: "Gold",
+            Phenix: "Rust",
+            Vessta: "Fuschia"
         }
     },
     { 
         label: "item", 
         hasSubmenu: items ,
         flavor: {
-            zeaque: "Zeaque orginizes his inventory",
-            markor: "Markor may have something",
-            phenix: "Phenix searches though the ashes",
-            vessta: "Vessta has found something"
+            Zeaque: "Zeaque orginizes his inventory",
+            Markor: "Markor may have something",
+            Phenix: "Phenix searches though the ashes",
+            Vessta: "Vessta has found something"
         },
     }
 ];
 
 export const characterIndexMap = {
 	PH    : 0,
-  	zeaque: 1,
-  	vessta: 2,
-  	phenix: 3,
-  	markor: 4
+  	Zeaque: 1,
+  	Vessta: 2,
+  	Phenix: 3,
+  	Markor: 4
 };

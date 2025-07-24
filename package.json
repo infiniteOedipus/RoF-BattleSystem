@@ -16,6 +16,7 @@
     "vite": "^7.0.4"
   },
   "dependencies": {
+    "@pixi/tilemap": "^5.0.2",
     "pixi-filters": "^6.1.4",
     "pixi.js": "^8.11.0"
   }

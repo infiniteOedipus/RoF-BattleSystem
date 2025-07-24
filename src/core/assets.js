@@ -12,6 +12,19 @@ const manifest = {
         { "alias": "sheet_card_item",    "src": "/sprites/sheet_card_item.png" },
         { "alias": "sheet_card_blood",   "src": "/sprites/sheet_card_blood.png" }
       ]
+    },
+    {
+      name: "combatActors",
+      assets: [
+        { "alias": "sheet_combat_zeaque",      "src": "/sprites/sheet_combat_zeaque.png" },
+      ]
+    },
+    {
+      name: "mapTiles",
+      assets: [
+        { "alias": "tile_floor",      "src": "/sprites/tile_floor.png" },
+        { "alias": "tile_wall",      "src": "/sprites/tile_wall.png" },
+      ]
     }
   ]
 }
@@ -19,13 +32,31 @@ const manifest = {
 export const loadedTextures = {}
 
 export async function loadAssets() {
-    await Assets.init({ manifest });
+  await Assets.init({ manifest });
 
-    try {
+    /*try {
         loadedTextures.cards = await Assets.loadBundle("cards");
     } catch (e) {
         console.error("Failed to load cards bundle:", e);
-    }
+    }*/
 
-    console.log(loadedTextures)
+  /*await manifest.bundles.forEach((bundle) => {
+    try {
+      loadedTextures[bundle.name] =  Assets.loadBundle(bundle.name);
+    } catch (e) {
+      console.error("Failed to load cards bundle:", e);
+    }  
+  })*/
+
+  await Promise.all(
+    manifest.bundles.map(async (bundle) => {
+      try {
+        loadedTextures[bundle.name] = await Assets.loadBundle(bundle.name)
+      } catch (e) {
+        console.error ( `failed to load ${bundle.name} bundle:`, e)
+      }
+    })
+  )
+
+  console.log(loadedTextures)
 }

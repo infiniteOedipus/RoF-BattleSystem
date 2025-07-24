@@ -1,8 +1,7 @@
 import { Ticker } from 'pixi.js';
 import { createApp } from './src/core/app.js';
 import { loadAssets } from './src/core/assets.js';
-import { changeGameState } from './src/logic/stateManager.js'
-import { MenuState } from './src/states/menuState.js';
+import { changeGameState, MenuState, AttackState } from './src/states/stateManager.js'
 
 export const gameLoop = new Ticker();
 
@@ -14,6 +13,6 @@ export const gameLoop = new Ticker();
 
     gameLoop.start()
     
-    changeGameState(MenuState);
+    changeGameState(AttackState);
 })();
 

@@ -23,14 +23,6 @@ export class menuContainer extends Container {
             cards: []
         };
 
-        this.filters = [
-            new DropShadowFilter({
-                offsetX : 0,
-                offsetY : 0,
-                blur : 6,
-            })
-        ]
-
         this.cardTitleText = new Text({
             text: ``,
             style: {
@@ -55,17 +47,30 @@ export class menuContainer extends Container {
             y: 260
         })
 
-        this.addChild(this.cardTitleText)
-        this.addChild(this.cardFlavorText)
+        this.textContainer = new Container()
+        this.addChild(this.textContainer)
+        this.textContainer.addChild(this.cardTitleText)
+        this.textContainer.addChild(this.cardFlavorText)
+
+        this.cardContainer = new Container()
+        this.addChild(this.cardContainer)
         this.runCardCreation();
+        this.cardContainer.filters = [
+            new DropShadowFilter({
+                offsetX : 0,
+                offsetY : 0,
+                blur : 6,
+            })
+        ]
+
         gameLoop.add(this.update, this)
     };
 
     update(ticker) { //Menu Control Function
         const dt = ticker.deltaMS / 1000
-        this.menuInputControl();
-        this.updateCardTargets(dt);
-        this.updateTitleText();
+        this.menuInputControl(); //Updates logic based on current inputs
+        this.updateCardTargets(dt); //Updates Cards to match current logic
+        this.updateTitleText(); // Updates text elements to match current logic
     }
 
     menuInputControl() {
@@ -138,7 +143,7 @@ export class menuContainer extends Container {
                     if (elapsed >= delay) {
                         const makeCard = new Card (char, "char", state.finishedChoicePath[i])
                         state.cards.push(makeCard)
-                        this.addChild(makeCard)
+                        this.cardContainer.addChild(makeCard)
                         gameLoop.remove(cardDelayTicker, this)
 
                         if (i === battleParticipants.length - 1) state.locked = false
@@ -158,7 +163,7 @@ export class menuContainer extends Container {
                     if (elapsed >= delay) {
                         const makeCard = new Card (battleParticipants[state.liveSelections[0]], action.label, true)
                         state.cards.push(makeCard)
-                        this.addChild(makeCard)
+                        this.cardContainer.addChild(makeCard)
                         gameLoop.remove(cardDelayTicker, this)
 
                         if (i === menuActions.length - 1) state.locked = false

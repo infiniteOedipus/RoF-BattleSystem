@@ -4,6 +4,7 @@ import { battleParticipants, menuActions } from "../config";
 import { gameLoop } from "../../main";
 import { Card } from "./Card";
 import { DropShadowFilter } from "pixi-filters";
+import { app } from "../core/app";
 
 export class menuContainer extends Container {
     constructor (){
@@ -80,7 +81,7 @@ export class menuContainer extends Container {
         const indexMax = this.findIndexMax();
 
         if (input.right(true)) {
-            state.selectionIndex = (state.selectionIndex + 1) % indexMax
+            state.selectionIndex = (state.selectionIndex + 1) % indexMax 
         }
 
         if (input.left(true)) {
@@ -94,11 +95,11 @@ export class menuContainer extends Container {
             state.step++ //advance Step
 
             if ((state.step === 2 && !menuActions[state.liveSelections[1]].hasSubmenu) || state.step === 3) { //checks if this was the last step (hasSubmenu adds 1 more to the step total)
-                state.step = 0 //refreshes step back to initial state
-                state.finishedChoicePath[state.liveSelections[0]] = true //caches if a characters selection path has been completed, for the sake of visuals and checking if all selections have been completed
-                this.menuState.liveSelections = []
+                state.step = 0                                              //refreshes step back to initial state
+                state.finishedChoicePath[state.liveSelections[0]] = true    //caches if a characters selection path has been completed, for the sake of visuals and checking if all selections have been completed
+                this.menuState.liveSelections = []                          //refreshes live selection path to be blank
             }
-        
+            console.log(state.cachedSelections)
             state.selectionIndex = state.cachedSelections[state.liveSelections[0]]?.[state.step] ?? 0 //reopening a finished menu will guide you on a path of the previous choices.
             this.runCardRemoval()
             this.menuState.cards = []

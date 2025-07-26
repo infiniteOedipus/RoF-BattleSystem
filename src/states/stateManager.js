@@ -25,11 +25,6 @@ export const MenuState = {
         const menu = new menuContainer();
         app.stage.addChild(menu)
     },
-
-    update(dt) {
-
-    },
-
     end() {
         
     }
@@ -42,11 +37,6 @@ export const AttackState = {
         const combat = new combatContainer();
         app.stage.addChild(combat)
     },
-
-    update(dt) {
-
-    },
-
     end() {
         
     }

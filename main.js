@@ -13,6 +13,6 @@ export const gameLoop = new Ticker();
 
     gameLoop.start()
     
-    changeGameState(AttackState);
+    changeGameState(MenuState);
 })();
 

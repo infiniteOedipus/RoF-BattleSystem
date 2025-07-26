@@ -17,6 +17,7 @@ const manifest = {
       name: "combatActors",
       assets: [
         { "alias": "sheet_combat_zeaque",      "src": "/sprites/sheet_combat_zeaque.png" },
+        { "alias": "fuckyou",      "src": "/sprites/fuckyou.png" },
       ]
     },
     {
@@ -24,6 +25,8 @@ const manifest = {
       assets: [
         { "alias": "tile_floor",      "src": "/sprites/tile_floor.png" },
         { "alias": "tile_wall",      "src": "/sprites/tile_wall.png" },
+        { "alias": "tile_floor_tall",      "src": "/sprites/tile_floor_tall.png" },
+        { "alias": "tile_wall_tall",      "src": "/sprites/tile_wall_tall.png" },
       ]
     }
   ]
@@ -33,20 +36,6 @@ export const loadedTextures = {}
 
 export async function loadAssets() {
   await Assets.init({ manifest });
-
-    /*try {
-        loadedTextures.cards = await Assets.loadBundle("cards");
-    } catch (e) {
-        console.error("Failed to load cards bundle:", e);
-    }*/
-
-  /*await manifest.bundles.forEach((bundle) => {
-    try {
-      loadedTextures[bundle.name] =  Assets.loadBundle(bundle.name);
-    } catch (e) {
-      console.error("Failed to load cards bundle:", e);
-    }  
-  })*/
 
   await Promise.all(
     manifest.bundles.map(async (bundle) => {

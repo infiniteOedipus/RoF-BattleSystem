@@ -1,7 +1,9 @@
-import { Container } from "pixi.js";
+import { Container, Sprite } from "pixi.js";
 import { input } from "../core/input";
 import { playerActor } from "./playerActor";
 import { gameLoop } from "../../main";
+import { combatMap } from "./combatMaps";
+import { loadedTextures } from "../core/assets";
 
 export class combatContainer extends Container{
     constructor (){
@@ -17,8 +19,22 @@ export class combatContainer extends Container{
             pDY : 0,
         }
 
+        this.oniActor = {
+            aX : 0,
+            aY : 0,
+            aVX : 1,
+            aVY : 1,
+        }
+
         this.player = new playerActor()
+        this.testMap = new combatMap()
+
+        this.addChild(this.testMap)
         this.addChild(this.player)
+
+        this.oniSprite = new Sprite(loadedTextures.combatActors[`fuckyou`])
+        this.oniSprite.anchor.set(0.5, 1)
+        this.addChild(this.oniSprite)
 
         gameLoop.add(this.update, this)
     }
@@ -26,7 +42,8 @@ export class combatContainer extends Container{
     update (ticker) {
         const dt = ticker.deltaMS / 1000
         this.inputController(dt);
-        this.updateMovement(dt)
+        this.updateMovement(dt);
+        this.updateOni(dt)
     }
 
     inputController(dt) {
@@ -65,5 +82,24 @@ export class combatContainer extends Container{
         this.player.y = Math.floor(pData.pY)
 
         console.log(pData.pX, pData.pY)
+    }
+
+    updateOni(dt) {
+        const pData = this.playerActor
+        const aData = this.oniActor
+
+        //const distance = Math.hypot(pData.pX - aData.aX, pData.pY - aData.aY)
+
+        //const normalDX = distance > 0 ? (pData.pX - aData.aX) / distance : 0
+        //const normalDY = distance > 0 ? (pData.pY - aData.aY) / distance : 0
+
+        aData.aVX += (pData.pX - (aData.aVX / 2 + aData.aX) ) * 3
+        aData.aVY += (pData.pY - (aData.aVY / 2 + aData.aY) ) * 3
+
+        aData.aX += aData.aVX * dt
+        aData.aY += aData.aVY * dt
+
+        this.oniSprite.x = Math.floor(aData.aX)
+        this.oniSprite.y = Math.floor(aData.aY)
     }
 }

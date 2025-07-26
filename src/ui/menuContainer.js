@@ -229,5 +229,16 @@ export class menuContainer extends Container {
         if (this.cardTitleText.text != activeTitle) this.cardTitleText.text = activeTitle
         if (this.cardFlavorText.text != activeFlavor) this.cardFlavorText.text = activeFlavor
     }
+
+    checkCardLegality() {
+        if(step === 0) {
+            //if character status contains downed return false
+
+        }
+        if(step === 1) {
+            //if has submenu && submenu does not contain matching ownership return false
+
+        }
+    }
 }
 

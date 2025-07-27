@@ -1,6 +1,7 @@
 import { combatContainer } from "../phase_Attack/combatContainer";
 import { app } from "../core/app";
 import { menuContainer } from "../ui/menuContainer";
+import { menuContainer2 } from "../phase_Menu/menuContainer";
 
 let currentGameState = null;
 
@@ -22,7 +23,7 @@ export function getGameState() {
 
 export const MenuState = {
     init() {
-        const menu = new menuContainer();
+        const menu = new menuContainer2();
         app.stage.addChild(menu)
     },
     end() {

@@ -114,6 +114,10 @@ export class menuContainer extends Container {
             state.liveSelections[state.step] = null
             state.finishedChoicePath[state.liveSelections[0]] = false
             state.step--
+            this.runCardRemoval()
+            this.menuState.cards = []
+            this.menuState.locked = true
+            this.runCardCreation()
         }
     };
 

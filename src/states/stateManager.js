@@ -1,4 +1,4 @@
-import { combatContainer } from "../attackPhase/combatContainer";
+import { combatContainer } from "../phase_Attack/combatContainer";
 import { app } from "../core/app";
 import { menuContainer } from "../ui/menuContainer";
 

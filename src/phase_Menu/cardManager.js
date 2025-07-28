@@ -1,3 +1,4 @@
+import { AdjustmentFilter } from "pixi-filters"
 import { gameLoop } from "../../main"
 import { Card } from "./card"
 
@@ -19,8 +20,18 @@ export class cardManager {
                 elapsed += ticker.deltaMS / 1000
                 if (elapsed < delay) return
 
-                const { char, action, highlight} = getCardData(data, i)
-                const makeCard = new Card (char, action, highlight)
+                const { char, action, highlight, isInvalid} = getCardData(data, i)
+                const makeCard = new Card (char, action, highlight, isInvalid)
+
+                if (isInvalid) {
+                    /*makeCard.filters.push(
+                        new AdjustmentFilter({
+                            saturation: 0
+                        })
+                    )*/
+                   console.log('invalid card present')
+                } 
+
                 this.cards.push(makeCard)
                 this.container.addChild(makeCard)
 

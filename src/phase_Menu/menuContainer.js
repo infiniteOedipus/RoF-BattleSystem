@@ -4,6 +4,8 @@ import { MenuStateManager } from "./menuStateManager"
 import { menuText } from "./menuText"
 import { cardManager } from "./cardManager"
 import { gameLoop } from "../../main"
+import { app } from "../core/app"
+import { AttackState, changeGameState } from "../states/stateManager"
 
 export class menuContainer2 extends Container {
     constructor(){
@@ -11,7 +13,8 @@ export class menuContainer2 extends Container {
         this.state = {
             locked: true,
             isLocked: () => this.state.locked,
-            setLocked: (val) => { this.state.locked = val } 
+            setLocked: (val) => { this.state.locked = val },
+            exitMenuState: () => this.exitMenuState()
         }
 
         this.cardContainer = new Container()
@@ -21,17 +24,27 @@ export class menuContainer2 extends Container {
         
         this.cardManager = new cardManager(this.cardContainer, this.state.isLocked, this.state.setLocked)
         this.textRenderer = new menuText(this.textContainer)
-        this.menuState = new MenuStateManager(battleParticipants, menuActions, this.cardManager, this.state.isLocked, this.state.setLocked)
+        this.menuState = new MenuStateManager(battleParticipants, menuActions, this.cardManager, this.state.isLocked, this.state.setLocked, this.state.exitMenuState)
 
         this.menuState.createCardsForStep()
         gameLoop.add(this.update, this)
+
     }
     
     update(ticker){
         const dt = ticker.deltaMS / 1000
-
-        if (!this.locked) this.menuState.handleInput()
+        if (!this.state.locked) this.menuState.handleInput()
         this.cardManager.updateTargets(this.menuState.selectionIndex, dt)
         this.textRenderer.update(this.menuState.getTitle(), this.menuState.getFlavor())
+    }
+
+    exitMenuState() {
+        gameLoop.remove(this.update, this)
+        this.cardManager.clear()
+        this.textRenderer.end()
+        this.destroy({ children: true})
+        app.stage.removeChild(this)
+
+        changeGameState(AttackState)
     }
 }

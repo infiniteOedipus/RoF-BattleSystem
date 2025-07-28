@@ -2,11 +2,11 @@
 import { loadedTextures } from "../core/assets";
 import { characterIndexMap } from "../config";
 import { gameLoop } from "../../main";
-import { DropShadowFilter } from "pixi-filters";
+import { AdjustmentFilter, DropShadowFilter } from "pixi-filters";
 import { Container, Rectangle, Sprite, Texture } from "pixi.js";
 
 export class Card extends Container {
-    constructor (char, action, isCompleted){
+    constructor (char, action, isCompleted, isInvalid){
         super()
         
         const charIdx = characterIndexMap[char] ?? 0;
@@ -25,6 +25,10 @@ export class Card extends Container {
                 offsetX : 0,
                 offsetY : 0,
                 blur : 3,
+            }),
+
+            new AdjustmentFilter({
+                saturation: (isInvalid ? 0 : 1)
             })
         ]
 

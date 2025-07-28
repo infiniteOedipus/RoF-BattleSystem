@@ -34,4 +34,17 @@ export class menuText {
         if (this.cardTitleText.text  != title)  this.cardTitleText.text  = title
         if (this.cardFlavorText.text != flavor) this.cardFlavorText.text = flavor
     }
+
+    end() {
+        if (this.cardTitleText?.parent) {
+            this.cardTitleText.parent.removeChild(this.cardTitleText)
+        }
+        this.cardTitleText.destroy()
+
+        if (this.cardFlavorText?.parent) {
+            this.cardFlavorText.parent.removeChild(this.cardFlavorText)
+        }
+        this.cardFlavorText.destroy()
+
+    }
 }

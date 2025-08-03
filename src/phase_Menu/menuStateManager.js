@@ -1,4 +1,5 @@
 import { input } from "../core/input"
+import { actionChoices } from "./menuContainer"
 
 export class MenuStateManager {
     constructor(participants, actions, cardManager, isLocked, setLocked, cleanup) {
@@ -203,5 +204,30 @@ export class MenuStateManager {
         }
         this.finished = false
         console.log('not finished')
+    }
+
+    convertActionChoices(){
+        const result = {}
+
+        this.cachedSelections.forEach((path) => {
+            const [charIdx, actionIdx, subIdx] = path
+            const char = this.participants[charIdx]
+            const action = this.actions[actionIdx]
+
+            const entry = {
+                action: action.label
+            }
+
+            if (action.hasSubmenu && subIdx !== undefined) {
+                const submenu = action.hasSubmenu.filter(
+                    item => item.owner = char
+                )
+                entry.subAction = submenu[subIdx]?.name ?? null
+            }
+
+            result[char] = entry
+        })
+
+        return result
     }
 }

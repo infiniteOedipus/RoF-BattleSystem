@@ -7,9 +7,13 @@ import { gameLoop } from "../../main"
 import { app } from "../core/app"
 import { AttackState, changeGameState } from "../states/stateManager"
 
+export let actionChoices = {}
+
 export class menuContainer2 extends Container {
     constructor(){
         super()
+        actionChoices = []
+
         this.state = {
             locked: true,
             isLocked: () => this.state.locked,
@@ -40,6 +44,9 @@ export class menuContainer2 extends Container {
 
     exitMenuState() {
         gameLoop.remove(this.update, this)
+
+        Object.assign(actionChoices, this.menuState.convertActionChoices())
+        console.log(actionChoices)
         this.cardManager.clear()
         this.textRenderer.end()
         this.destroy({ children: true})

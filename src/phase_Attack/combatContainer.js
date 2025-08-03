@@ -2,10 +2,43 @@ import { Container, Sprite } from "pixi.js";
 import { input } from "../core/input";
 import { playerActor } from "./playerActor";
 import { gameLoop } from "../../main";
-import { combatMap } from "./combatMaps";
+import { combatMap } from "./mapContainer";
 import { loadedTextures } from "../core/assets";
+import { app } from "../core/app";
+import { combatInteractivesContainer } from "./combatInteractivesContainer";
 
-export class combatContainer extends Container{
+//Init
+
+// Create Map
+// Process Action Choices
+// Place Player Actor on safe tile
+// Item Submenu Options are run
+// Controls Unlock
+// Enemy / Bullet Spawn Patterns are Started
+
+
+
+//Collision
+
+// 
+
+export class combatContainer extends Container {
+    constructor() {
+        super()
+
+        this.combatInteractives = new combatInteractivesContainer()
+
+        this.addChild(this.combatInteractives)
+        gameLoop.add(this.update, this)
+    }
+
+    update (ticker) {
+        const dt = ticker.deltaMS / 1000
+        this.combatInteractives.update(dt)
+    }
+}
+
+/*export class combatContainer extends Container{
     constructor (){
         super()
         
@@ -102,4 +135,4 @@ export class combatContainer extends Container{
         this.oniSprite.x = Math.floor(aData.aX)
         this.oniSprite.y = Math.floor(aData.aY)
     }
-}
+}*/

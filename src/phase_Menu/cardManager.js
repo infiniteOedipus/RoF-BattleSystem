@@ -13,7 +13,7 @@ export class cardManager {
 
     createCards(dataList, getCardData, onComplete) {
         dataList.forEach((data, i) => {
-            const delay = i * 0.15 + (0.1 / (2 * i + 1))
+            const delay = i * 0.05
             let elapsed = 0
 
             const cardDelayTicker = (ticker) => {

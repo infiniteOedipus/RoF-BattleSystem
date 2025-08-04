@@ -16,7 +16,7 @@
     "vite": "^7.0.4"
   },
   "dependencies": {
-    "@pixi/math-extras": "^7.4.3",
+
     "@pixi/tilemap": "^5.0.2",
     "mathjs": "^14.6.0",
     "pixi-filters": "^6.1.4",

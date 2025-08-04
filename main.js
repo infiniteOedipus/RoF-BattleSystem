@@ -16,12 +16,11 @@ export const gameLoop = new Ticker();
 
     gameLoop.start()
 
-    window.addEventListener("keydown", (e) => {
+    /*window.addEventListener("keydown", (e) => {
     if (e.key === "o") {
         goFullscreen();
     }
-    });
-    
+    });*/
     poopFart()
     changeGameState(AttackState);
 })();

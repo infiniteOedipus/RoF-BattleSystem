@@ -2,7 +2,7 @@
 
 export const GAME_WIDTH = 650;
 export const GAME_HEIGHT = 450;
-export const BACKGROUND_COLOR = 0xffcccc;
+export const BACKGROUND_COLOR = 0xccffcc;
 
 export const keyBindings = {
 	left: ["ArrowLeft", "a", "A"],

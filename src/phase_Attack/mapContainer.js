@@ -14,6 +14,7 @@ export class combatMap extends Container {
 
 
     buildMap() {
+        
         activeMap.forEach((row, indexY) => {
             row.forEach((tile, indexX) => {
                 if (tile === 0) return

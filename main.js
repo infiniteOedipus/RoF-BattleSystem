@@ -5,12 +5,15 @@ import { changeGameState, MenuState, AttackState } from './src/states/stateManag
 import { GAME_HEIGHT, GAME_WIDTH } from './src/config.js';
 import { input } from './src/core/input.js';
 import { poopFart } from './src/phase_Attack/combatMaps.js';
+import { extendPointPrototype } from './src/utils/pointExtensions.js';
 
 export const gameLoop = new Ticker();
 
 (async() => {
     const app = await createApp();
     await loadAssets();
+
+    addUtils()
 
     document.body.appendChild(app.canvas)
 
@@ -34,4 +37,8 @@ function goFullscreen() {
         canvas.webkitRequestFullscreen()
     }
     
+}
+
+function addUtils() {
+    extendPointPrototype()
 }

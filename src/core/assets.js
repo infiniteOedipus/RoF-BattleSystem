@@ -28,6 +28,12 @@ const manifest = {
         { "alias": "tile_floor_tall",      "src": "/sprites/tile_floor_tall.png" },
         { "alias": "tile_wall_tall",      "src": "/sprites/tile_wall_tall.png" },
       ]
+    },
+    {
+      name: "bullets",
+      assets: [
+        { "alias": "sheet_bullet_attack_zeaque",      "src": "/sprites/sheet_bullet_attack_zeaque.png" }
+      ]
     }
   ]
 }
